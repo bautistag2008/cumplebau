@@ -1,13 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Los 18 de Bauti 🎈</title>
+<style>
+:root{--navy:#162B4E;--cream:#FFF4E0;--coral:#FF6B6B;--sun:#FFC93C;--sky:#7FC8F8;--ink:#0E1C36;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+html{scroll-behavior:smooth;scroll-padding-top:calc(64px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;overflow-x:hidden}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:10px;background:var(--navy);box-shadow:0 4px 14px #0004}
+nav a{color:var(--cream);text-decoration:none;font-weight:700;font-size:.9rem;padding:8px 14px;border-radius:99px}
+nav a:hover{background:var(--sun);color:var(--navy)}
+section{position:relative;min-height:calc(100vh - 64px);padding:70px 22px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.dark{background:var(--navy);color:var(--cream)}
+.light{background:var(--cream);color:var(--navy)}
+.sky{background:var(--sky);color:var(--navy)}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.2rem,8vw,4.8rem);line-height:1.05;margin:0 0 14px;position:relative;z-index:2;max-width:760px}
+h1 em{color:var(--sun);font-style:normal}
+h2{font-family:Georgia,serif;font-size:clamp(1.8rem,5vw,3rem);margin:0 0 20px;position:relative;z-index:2}
+p{position:relative;z-index:2;font-size:1.15rem;line-height:1.6;max-width:600px}
+.card{position:relative;z-index:2;background:#fff;color:var(--navy);border-radius:20px;padding:26px 30px;box-shadow:0 10px 30px #162b4e33;max-width:520px;width:100%}
+.big{font-size:clamp(1.5rem,5vw,2.3rem);font-weight:800;margin:6px 0}
+.tag{display:inline-block;background:var(--sun);color:var(--navy);font-weight:800;border-radius:99px;padding:6px 16px;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase}
+.btn{position:relative;z-index:2;display:inline-block;border:0;cursor:pointer;background:var(--coral);color:#fff;font:800 1.05rem inherit;font-family:inherit;padding:14px 28px;border-radius:99px;text-decoration:none;box-shadow:0 6px 0 #c24848;transition:transform .1s}
+.btn:active{transform:translateY(4px);box-shadow:0 2px 0 #c24848}
+.btn.alt{background:var(--navy);box-shadow:0 6px 0 #0a1830}
+.dark .btn.alt{background:var(--sun);color:var(--navy);box-shadow:0 6px 0 #b8901f}
+/* Globos */
+.balloon{position:absolute;width:62px;height:78px;border-radius:50% 50% 48% 48%;animation:float 6s ease-in-out infinite;z-index:1}
+.balloon:before{content:"";position:absolute;left:50%;top:100%;width:2px;height:90px;background:#ffffff88}
+.balloon:after{content:"";position:absolute;left:18%;top:15%;width:14px;height:22px;border-radius:50%;background:#fff6;transform:rotate(25deg)}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-22px) rotate(3deg)}}
+/* Polaroids */
+.pol{position:absolute;z-index:1;width:150px;background:#fff;padding:9px 9px 30px;box-shadow:0 8px 20px #0005;margin:0;opacity:.95}
+.pol .ph{aspect-ratio:1;background:linear-gradient(135deg,#dfe7f3,#b9c8e0);display:grid;place-items:center;font-size:2rem;color:#162B4E88;overflow:hidden}
+.pol img{width:100%;height:100%;object-fit:cover;display:block}
+.pol figcaption{position:absolute;bottom:6px;left:0;right:0;font:italic .85rem Georgia,serif;color:#444}
+@media(max-width:700px){.pol{width:96px;padding:6px 6px 20px}.pol figcaption{display:none}.pol.hide-m{display:none}.balloon{width:46px;height:58px}}
+/* Form */
+form{position:relative;z-index:2;display:grid;gap:14px;text-align:left}
+label{font-weight:700;font-size:.95rem}
+input[type=text]{width:100%;padding:12px 14px;border:2px solid #162B4E33;border-radius:12px;font:inherit;margin-top:5px}
+input[type=text]:focus{outline:3px solid var(--sun);border-color:var(--navy)}
+.opts{display:flex;gap:10px}
+.opts label{flex:1;cursor:pointer}
+.opts input{position:absolute;opacity:0}
+.opts span{display:block;text-align:center;padding:12px;border-radius:12px;border:2px solid #162B4E33;font-weight:800}
+.opts input:checked+span{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.opts input:focus-visible+span{outline:3px solid var(--sun)}
+#msg{margin-top:14px;font-weight:800;min-height:1.4em;position:relative;z-index:2}
+footer{background:var(--navy);color:var(--cream);text-align:center;padding:24px;font-size:.9rem}
+</style>
 </head>
 <body>
-    <h1>Se viene el cumple de bauti</h1>
-    <p>el 25/10 bauti festeja su cumple en su casa, NO FALTES!!!</p>
+<nav>
+  <a href="#inicio">Inicio</a><a href="#lugar">Lugar y fecha</a><a href="#regalos">Regalos</a><a href="#confirmar">Confirmar</a>
+</nav>
+
+<!-- 1. INTRODUCCIÓN -->
+<section id="inicio" class="dark">
+  <div class="balloon" style="left:6%;top:12%;background:var(--coral)"></div>
+  <div class="balloon" style="left:18%;top:52%;background:var(--sun);animation-delay:-2s"></div>
+  <div class="balloon" style="right:8%;top:10%;background:var(--sky);animation-delay:-1s"></div>
+  <div class="balloon" style="right:20%;top:55%;background:var(--coral);animation-delay:-3.5s"></div>
+  <div class="balloon" style="left:42%;top:4%;background:var(--sun);animation-delay:-4s;width:48px;height:60px"></div>
+  <figure class="pol" style="left:3%;bottom:6%;transform:rotate(-8deg)"><div class="ph"><img src="baubb.jpg" alt=""></div><figcaption>foto 1</figcaption></figure>
+  <figure class="pol hide-m" style="right:4%;bottom:8%;transform:rotate(7deg)"><div class="ph"><img src="playaflia.jpg" alt=""></div><figcaption>foto 2</figcaption></figure>
+  <span class="tag" style="position:relative;z-index:2;margin-bottom:18px">Estás invitado</span>
+  <h1>Corranse que se vienen los <em>18</em> de Bauti</h1>
+  <a class="btn" href="#confirmar">¡Confirmá tu asistencia!</a>
+</section>
+
+<!-- 2. LUGAR Y FECHA -->
+<section id="lugar" class="light">
+  <figure class="pol" style="left:4%;top:8%;transform:rotate(6deg)"><div class="ph"><img src="fddmikha.JPEG" alt=""></div><figcaption>foto 3</figcaption></figure>
+  <figure class="pol hide-m" style="right:5%;top:12%;transform:rotate(-6deg)"><div class="ph"><img src="fotocatu.JPEG" alt=""></div><figcaption>foto 4</figcaption></figure>
+  <figure class="pol" style="right:8%;bottom:6%;transform:rotate(4deg)"><div class="ph"><img src="fotoipadesbr.jpg" alt=""></div><figcaption>foto 5</figcaption></figure>
+  <h2>Lugar y fecha</h2>
+  <div class="card">
+    <span class="tag">📅 Fecha</span>
+    <div class="big" id="fecha">DOMINGO 25 DE OCTUBRE · 13:00 HS</div>
+    <hr style="border:0;border-top:2px dashed #162B4E33;margin:20px 0">
+    <span class="tag">📍 Lugar</span>
+    <div class="big" id="lugarTxt">MI CASA<br><small style="font-size:.6em;font-weight:600">Alberdi 1135, P. Esther</small></div>
+    <p style="margin:14px auto"></p>
+    <a class="btn alt" id="mapa" href="https://maps.app.goo.gl/X6KkLMPqZbU2EZQ39" target="_blank" rel="noopener">Cómo llegar en Google Maps</a>
+  </div>
+</section>
+
+<!-- 3. REGALOS -->
+<section id="regalos" class="sky">
+  <figure class="pol" style="left:5%;bottom:7%;transform:rotate(-5deg)"><div class="ph"><img src="fotomellizbellu.jpg" alt=""></div><figcaption>foto 6</figcaption></figure>
+  <figure class="pol hide-m" style="left:6%;top:9%;transform:rotate(8deg)"><div class="ph"><img src="fotomellizpayaso.JPEG" alt=""></div><figcaption>foto 7</figcaption></figure>
+  <figure class="pol" style="right:5%;top:10%;transform:rotate(-7deg)"><div class="ph"><img src="delfiriver.JPEG" alt=""></div><figcaption>foto 8</figcaption></figure>
+  <h2>Regalos 🎁</h2>
+  <div class="card">
+    <p style="margin:0 auto 18px">De regalo quiero plata, no se gasten en ir a comprar algo. Es más, si me traen otra cosa que no sea plata voy a fingir sorpresa y alegría pero por dentro voy a estar decepcionado.</p>
+    <p style="margin:0 auto 20px"><strong>Si no tienen efectivo, acá les dejo el link de mi billetera virtual:</strong></p>
+    <a class="btn" id="billetera" href="#" target="_blank" rel="noopener">💸 Ir a mi billetera virtual</a>
+  </div>
+</section>
+
+<!-- 4. CONFIRMACIÓN -->
+<section id="confirmar" class="dark">
+  <div class="balloon" style="left:5%;top:8%;background:var(--sun);animation-delay:-1s"></div>
+  <div class="balloon" style="right:6%;top:50%;background:var(--coral);animation-delay:-3s"></div>
+  <figure class="pol" style="right:4%;top:6%;transform:rotate(6deg)"><div class="ph"><img src="fotoabuelos.jpg" alt=""></div><figcaption>foto 9</figcaption></figure>
+  <figure class="pol hide-m" style="left:4%;bottom:6%;transform:rotate(-6deg)"><div class="ph"><img src="fotononanono.jpg" alt=""></div><figcaption>foto 10</figcaption></figure>
+  <h2>Confirmación de asistencia</h2>
+  <div class="card">
+    <form id="rsvp">
+      <label>Nombre<input type="text" id="nombre" required autocomplete="given-name"></label>
+      <label>Apellido<input type="text" id="apellido" required autocomplete="family-name"></label>
+      <div>
+        <label style="display:block;margin-bottom:6px">¿Vas a venir?</label>
+        <div class="opts">
+          <label><input type="radio" name="va" value="Sí" required><span>¡Voy! 🎉</span></label>
+          <label><input type="radio" name="va" value="No"><span>No puedo 😢</span></label>
+        </div>
+      </div>
+      <button class="btn" type="submit">Enviar</button>
+    </form>
+    <div id="msg" role="status"></div>
+  </div>
+</section>
+<footer>Los 18 de Bauti · ¡Los espero! 🎈</footer>
+
+<script>
+// ===== EDITÁ ESTOS DATOS =====
+const CONFIG = {
+  mapsUrl: "https://maps.app.goo.gl/X6KkLMPqZbU2EZQ39",   // link de Google Maps a la dirección
+  billeteraUrl: "#",                         // link de tu billetera virtual
+  whatsapp: "5493416421066"                 // tu número con código de país, sin + ni espacios
+};
+document.getElementById("mapa").href = CONFIG.mapsUrl;
+document.getElementById("billetera").href = CONFIG.billeteraUrl;
+
+const form = document.getElementById("rsvp"), msg = document.getElementById("msg");
+let db = null;
+(async () => { try { db = await claude.use("db"); } catch (e) {} })();
+
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  const data = {
+    nombre: form.nombre.value.trim(),
+    apellido: form.apellido.value.trim(),
+    asiste: form.va.value,
+    fecha: new Date().toISOString()
+  };
+  const btn = form.querySelector("button"); btn.disabled = true;
+  try {
+    if (!db) throw new Error("sin db");
+    await db.doc("rsvps/" + Date.now() + "-" + Math.random().toString(36).slice(2, 7)).set(data);
+    msg.textContent = data.asiste === "Sí" ? "¡Listo " + data.nombre + "! Te esperamos 🎉" : "Gracias por avisar, " + data.nombre + ". ¡Te vamos a extrañar!";
+    form.reset();
+  } catch (err) {
+    const txt = encodeURIComponent("Hola Bauti! Soy " + data.nombre + " " + data.apellido + ". " + (data.asiste === "Sí" ? "Confirmo que voy a tu cumple 🎉" : "No voy a poder ir a tu cumple 😢"));
+    msg.innerHTML = "Último paso: tocá para mandarle tu respuesta a Bauti por WhatsApp 👇<br><br>";
+    const a = document.createElement("a");
+    a.className = "btn"; a.target = "_blank"; a.rel = "noopener";
+    a.href = "https://wa.me/" + CONFIG.whatsapp + "?text=" + txt;
+    a.textContent = "Enviar por WhatsApp";
+    msg.appendChild(a);
+    btn.disabled = false;
+  }
+});
+</script>
 </body>
 </html>
