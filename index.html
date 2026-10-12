@@ -33,12 +33,21 @@ p{position:relative;z-index:2;font-size:1.15rem;line-height:1.6;max-width:600px}
 .balloon:before{content:"";position:absolute;left:50%;top:100%;width:2px;height:90px;background:#ffffff88}
 .balloon:after{content:"";position:absolute;left:18%;top:15%;width:14px;height:22px;border-radius:50%;background:#fff6;transform:rotate(25deg)}
 @keyframes float{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-22px) rotate(3deg)}}
-/* Polaroids */
-.pol{position:absolute;z-index:1;width:150px;background:#fff;padding:9px 9px 30px;box-shadow:0 8px 20px #0005;margin:0;opacity:.95}
-.pol .ph{aspect-ratio:1;background:linear-gradient(135deg,#dfe7f3,#b9c8e0);display:grid;place-items:center;font-size:2rem;color:#162B4E88;overflow:hidden}
-.pol img{width:100%;height:100%;object-fit:cover;display:block}
-.pol figcaption{position:absolute;bottom:6px;left:0;right:0;font:italic .85rem Georgia,serif;color:#444}
-@media(max-width:700px){.pol{width:96px;padding:6px 6px 20px}.pol figcaption{display:none}.pol.hide-m{display:none}.balloon{width:46px;height:58px}}
+@media(max-width:700px){.balloon{width:46px;height:58px}}
+/* Carrusel */
+.carousel{position:relative;z-index:2;width:100%;max-width:960px}
+.track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:18px 6px 26px;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 min(78vw,340px);scroll-snap-align:center;background:#fff;padding:12px 12px 40px;box-shadow:0 10px 26px #162b4e44;margin:0;position:relative}
+.slide:nth-child(odd){transform:rotate(-2deg)}.slide:nth-child(even){transform:rotate(2deg)}
+.slide .ph{aspect-ratio:1;background:linear-gradient(135deg,#dfe7f3,#b9c8e0);display:grid;place-items:center;font-size:3rem;color:#162B4E88;overflow:hidden}
+.slide img{width:100%;height:100%;object-fit:cover;display:block}
+.slide figcaption{position:absolute;bottom:10px;left:0;right:0;font:italic 1rem Georgia,serif;color:#444}
+.arrow{position:absolute;top:50%;transform:translateY(-60%);z-index:3;width:46px;height:46px;border-radius:50%;border:0;background:var(--navy);color:var(--cream);font-size:1.4rem;cursor:pointer;box-shadow:0 4px 12px #0005}
+.arrow:hover{background:var(--coral)}.arrow.prev{left:-6px}.arrow.next{right:-6px}
+.dots{display:flex;gap:8px;justify-content:center;margin-top:4px}
+.dots button{width:11px;height:11px;border-radius:50%;border:0;padding:0;background:#162B4E44;cursor:pointer}
+.dots button.on{background:var(--coral);transform:scale(1.3)}
 /* Form */
 form{position:relative;z-index:2;display:grid;gap:14px;text-align:left}
 label{font-weight:700;font-size:.95rem}
@@ -56,7 +65,7 @@ footer{background:var(--navy);color:var(--cream);text-align:center;padding:24px;
 </head>
 <body>
 <nav>
-  <a href="#inicio">Inicio</a><a href="#lugar">Lugar y fecha</a><a href="#regalos">Regalos</a><a href="#confirmar">Confirmar</a>
+  <a href="#inicio">Inicio</a><a href="#lugar">Lugar y fecha</a><a href="#regalos">Regalos</a><a href="#fotos">Fotos</a><a href="#confirmar">Confirmar</a>
 </nav>
 
 <!-- 1. INTRODUCCIÓN -->
@@ -66,8 +75,6 @@ footer{background:var(--navy);color:var(--cream);text-align:center;padding:24px;
   <div class="balloon" style="right:8%;top:10%;background:var(--sky);animation-delay:-1s"></div>
   <div class="balloon" style="right:20%;top:55%;background:var(--coral);animation-delay:-3.5s"></div>
   <div class="balloon" style="left:42%;top:4%;background:var(--sun);animation-delay:-4s;width:48px;height:60px"></div>
-  <figure class="pol" style="left:3%;bottom:6%;transform:rotate(-8deg)"><div class="ph"><img src="baubb.jpg" alt=""></div><figcaption>diciembre 2009</figcaption></figure>
-  <figure class="pol hide-m" style="right:4%;bottom:8%;transform:rotate(7deg)"><div class="ph"><img src="playaflia.jpg" alt=""></div><figcaption>verano en la costa</figcaption></figure>
   <span class="tag" style="position:relative;z-index:2;margin-bottom:18px">Estás invitado</span>
   <h1>Corranse que se vienen los <em>18</em> de Bauti</h1>
   <a class="btn" href="#confirmar">¡Confirmá tu asistencia!</a>
@@ -75,16 +82,13 @@ footer{background:var(--navy);color:var(--cream);text-align:center;padding:24px;
 
 <!-- 2. LUGAR Y FECHA -->
 <section id="lugar" class="light">
-  <figure class="pol" style="left:4%;top:8%;transform:rotate(6deg)"><div class="ph"><img src="fotoprimos.jpg" alt=""></div><figcaption>tarde con la nona</figcaption></figure>
-  <figure class="pol hide-m" style="right:5%;top:12%;transform:rotate(-6deg)"><div class="ph"><img src="fotocatu.JPEG" alt=""></div><figcaption>verano 2025</figcaption></figure>
-  <figure class="pol" style="right:8%;bottom:6%;transform:rotate(4deg)"><div class="ph"><img src="fliabellu.jpg" alt=""></div><figcaption>mendoza 2024</figcaption></figure>
   <h2>Lugar y fecha</h2>
   <div class="card">
     <span class="tag">📅 Fecha</span>
-    <div class="big" id="fecha">DOMINGO 25 DE OCTUBRE · 13:00 HS</div>
+    <div class="big" id="fecha">Domingo 25 de octubre · 13:00 HS</div>
     <hr style="border:0;border-top:2px dashed #162B4E33;margin:20px 0">
     <span class="tag">📍 Lugar</span>
-    <div class="big" id="lugarTxt">MI CASA<br><small style="font-size:.6em;font-weight:600">Alberdi 1135, P. Esther</small></div>
+    <div class="big" id="lugarTxt">Mi casa<br><small style="font-size:.6em;font-weight:600">Alberdi 1135, P. Esther</small></div>
     <p style="margin:14px auto"></p>
     <a class="btn alt" id="mapa" href="https://maps.app.goo.gl/X6KkLMPqZbU2EZQ39" target="_blank" rel="noopener">Cómo llegar en Google Maps</a>
   </div>
@@ -92,14 +96,36 @@ footer{background:var(--navy);color:var(--cream);text-align:center;padding:24px;
 
 <!-- 3. REGALOS -->
 <section id="regalos" class="sky">
-  <figure class="pol" style="left:5%;bottom:7%;transform:rotate(-5deg)"><div class="ph"><img src="luchoiri.jpg" alt=""></div><figcaption>córdoba 2024</figcaption></figure>
-  <figure class="pol hide-m" style="left:6%;top:9%;transform:rotate(8deg)"><div class="ph"><img src="cumplealma.jpg" alt=""></div><figcaption>xv de alma</figcaption></figure>
-  <figure class="pol" style="right:5%;top:10%;transform:rotate(-7deg)"><div class="ph"><img src="primosfili.jpg" alt=""></div><figcaption>70 del abuelo</figcaption></figure>
   <h2>Regalos 🎁</h2>
   <div class="card">
-    <p style="margin:0 auto 18px">Para mis 18 estoy juntando plata para poder comprarme mi primer auto 🚗. Así que, si no saben qué regalarme, pueden ahorrarse el viaje de salir a comprar algo y ayudar a que esté un poquito más cerca de conseguirlo</p>
+    <p style="margin:0 auto 18px">De regalo para mis 18, estoy juntando plata para cumplir una meta que me hace mucha ilusión: comprarme mi primer auto 🚗💨. Es algo que tengo muchas ganas de lograr y, como todo suma, cualquier aporte me va a ayudar a estar un poquito más cerca. Así que, si quieren regalarme algo, me gustaría mucho que me ayuden a cumplir este objetivo.</p>
     <p style="margin:0 auto 20px"><strong>Si no tienen efectivo, acá les dejo el link de mi billetera virtual:</strong></p>
-    <a class="btn" id="billetera" href="https://link.mercadopago.com.ar/regalobauti" target="_blank" rel="noopener">💸 Ir a mi billetera virtual</a>
+    <a class="btn" id="billetera" href="https://link.mercadopago.com.ar/regalobauti" target="_blank" rel="noopener">💸 Transferir</a>
+    <p style="margin:0 auto 18px;font-size: 16px;">P. D.: La cuenta esta a nombre de mi mamá, me voy a encargar que lo enviado me llegue😊</p>
+  </div>
+</section>
+
+<!-- 3b. FOTOS -->
+<section id="fotos" class="light">
+  <h2>Un poco de mí 📸</h2>
+  <div class="carousel">
+    <button class="arrow prev" type="button" aria-label="Anterior">‹</button>
+    <div class="track" id="track">
+      <figure class="slide"><div class="ph"><img src="baubb.jpg" alt=""></div><figcaption>Bau 2009</figcaption></figure>
+      <figure class="slide"><div class="ph"><img src="playaflia.jpg" alt=""></div><figcaption>Verano en chapadmalal</figcaption></figure>
+      <figure class="slide"><div class="ph"><img src="cumplealma.jpg" alt=""></div><figcaption>XV de Alma</figcaption></figure>
+      <figure class="slide"><div class="ph"><img src="fotoprimos.jpg" alt=""></div><figcaption>Tarde de la nona</figcaption></figure>
+      <figure class="slide"><div class="ph"><img src="primosfili.jpg" alt=""></div><figcaption>los 70 del abuelo</figcaption></figure>
+      <figure class="slide"><div class="ph"><img src="fliabellu.jpg" alt=""></div><figcaption>Mendoza 2024</figcaption></figure>
+      <figure class="slide"><div class="ph"><img src="fotomellizpayaso.JPEG" alt=""></div><figcaption>Noche aburridos</figcaption></figure>
+      <figure class="slide"><div class="ph"><img src="fotocatu.JPEG" alt=""></div><figcaption>Mariscal 2025</figcaption></figure>
+      <figure class="slide"><div class="ph"><img src="luchoiri.jpg" alt=""></div><figcaption>Córdoba 2024</figcaption></figure>
+      <figure class="slide"><div class="ph"><img src="playafliagiannetti.jpg" alt=""></div><figcaption>Mariscal 2025</figcaption></figure>
+      <figure class="slide"><div class="ph"><img src="fddmikha.JPEG" alt=""></div><figcaption>FDD mikha 2026</figcaption></figure>
+      <figure class="slide"><div class="ph"><img src="fotomellizbellu.jpg" alt=""></div><figcaption>Verano 2020</figcaption></figure>
+    </div>
+    <button class="arrow next" type="button" aria-label="Siguiente">›</button>
+    <div class="dots" id="dots"></div>
   </div>
 </section>
 
@@ -107,8 +133,6 @@ footer{background:var(--navy);color:var(--cream);text-align:center;padding:24px;
 <section id="confirmar" class="dark">
   <div class="balloon" style="left:5%;top:8%;background:var(--sun);animation-delay:-1s"></div>
   <div class="balloon" style="right:6%;top:50%;background:var(--coral);animation-delay:-3s"></div>
-  <figure class="pol" style="right:4%;top:6%;transform:rotate(6deg)"><div class="ph"><img src="playafliagiannetti.jpg" alt=""></div><figcaption>verano 2025</figcaption></figure>
-  <figure class="pol hide-m" style="left:4%;bottom:6%;transform:rotate(-6deg)"><div class="ph"><img src="fotononanono.jpg" alt=""></div><figcaption>cumpleaños nono</figcaption></figure>
   <h2>Confirmación de asistencia</h2>
   <div class="card">
     <form id="rsvp">
@@ -167,6 +191,19 @@ form.addEventListener("submit", async e => {
     btn.disabled = false;
   }
 });
+
+// Carrusel
+(() => {
+  const track = document.getElementById("track"), slides = [...track.children], dots = document.getElementById("dots");
+  slides.forEach((_, i) => { const b = document.createElement("button"); b.setAttribute("aria-label", "Foto " + (i + 1)); b.onclick = () => go(i); dots.appendChild(b); });
+  const step = () => slides[0].offsetWidth + 18;
+  const cur = () => Math.round(track.scrollLeft / step());
+  const go = i => track.scrollTo({ left: Math.max(0, Math.min(slides.length - 1, i)) * step() });
+  const mark = () => [...dots.children].forEach((d, i) => d.classList.toggle("on", i === cur()));
+  document.querySelector(".arrow.prev").onclick = () => go(cur() - 1);
+  document.querySelector(".arrow.next").onclick = () => go(cur() + 1);
+  track.addEventListener("scroll", mark, { passive: true }); mark();
+})();
 </script>
 </body>
 </html>
