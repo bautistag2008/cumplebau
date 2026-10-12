@@ -62,6 +62,7 @@ input[type=text]:focus{outline:3px solid var(--sun);border-color:var(--navy)}
 #msg{margin-top:14px;font-weight:800;min-height:1.4em;position:relative;z-index:2}
 footer{background:var(--navy);color:var(--cream);text-align:center;padding:24px;font-size:.9rem}
 </style>
+<meta name="robots" content="noindex">
 </head>
 <body>
 <nav>
@@ -101,7 +102,7 @@ footer{background:var(--navy);color:var(--cream);text-align:center;padding:24px;
     <p style="margin:0 auto 18px">De regalo para mis 18, estoy juntando plata para cumplir una meta que me hace mucha ilusión: comprarme mi primer auto 🚗💨. Es algo que tengo muchas ganas de lograr y, como todo suma, cualquier aporte me va a ayudar a estar un poquito más cerca. Así que, si quieren regalarme algo, me gustaría mucho que me ayuden a cumplir este objetivo.</p>
     <p style="margin:0 auto 20px"><strong>Si no tienen efectivo, acá les dejo el link de mi billetera virtual:</strong></p>
     <a class="btn" id="billetera" href="https://link.mercadopago.com.ar/regalobauti" target="_blank" rel="noopener">💸 Transferir</a>
-    <p style="margin:0 auto 18px;font-size: 16px;">P. D.: La cuenta esta a nombre de mi mamá, me voy a encargar que lo enviado me llegue😊</p>
+    <p style="margin:0 auto 20px;font-size: 16px; padding-top: 1em;">P. D.: La cuenta está a nombre de mi mamá, me voy a encargar de que lo enviado me llegue😊</p>
   </div>
 </section>
 
@@ -158,11 +159,10 @@ footer{background:var(--navy);color:var(--cream);text-align:center;padding:24px;
 <footer>Los 18 de Bauti · ¡Los espero! 🎈</footer>
 
 <script>
-// ===== EDITÁ ESTOS DATOS =====
 const CONFIG = {
-  mapsUrl: "https://maps.app.goo.gl/X6KkLMPqZbU2EZQ39",   // link de Google Maps a la dirección
-  billeteraUrl: "https://link.mercadopago.com.ar/regalobauti",                         // link de tu billetera virtual
-  whatsapp: "5493416421066"                 // tu número con código de país, sin + ni espacios
+  mapsUrl: "https://maps.app.goo.gl/X6KkLMPqZbU2EZQ39",
+  billeteraUrl: "https://link.mercadopago.com.ar/regalobauti",
+  whatsapp: "5493416421066"
 };
 document.getElementById("mapa").href = CONFIG.mapsUrl;
 document.getElementById("billetera").href = CONFIG.billeteraUrl;
